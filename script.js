@@ -53,7 +53,7 @@ function my_turn(choice) {
         }
 
         if (my_attack != 0) {
-            prompt.innerHTML = "Ataque bem Sucedido, você deu: " + my_attack + " de dano!";
+            prompt.innerHTML = "Ataque bem Sucedido, você acertou: " + my_attack + " de dano!";
         } else {
             prompt.innerHTML = "Seu Ataque falhou!";
         }
@@ -106,7 +106,7 @@ function oponent_turn(choice) {
             }
             
             if (enemy_attack != 0) {
-                prompt.innerHTML = "Ataque bem Sucedido, oponente deu: " + enemy_attack + " de dano!";
+                prompt.innerHTML = "Ataque bem Sucedido, oponente acertou: " + enemy_attack + " de dano!";
             } else {
                 prompt.innerHTML = "Ataque do oponente falhou!";
             }
