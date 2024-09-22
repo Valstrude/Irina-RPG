@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="styles.css">
+  <title>Turn Game</title>
+</head>
+<body>
+    <main>
+      <p id="prompt">Um monstro aparece em sua frente!</p>
+      <img id="icons" src="icons/goblin.png" alt="goblin">
+      <input id="enemy_life" type="number" value='250' readonly></input>
+      <p></p>
+        <img id="map" src="cenario\planice.png" alt="mapa">
+        <img id="enemy" src="enemy/01.png" alt="Inimigo">
+    </main>
+    <main>
+      <div id="options">
+        <button id="atacar" onclick="my_turn(1)">Atacar</button>
+        <button id="defender" onclick="my_turn(3)">Defender</button>
+        <button id="curar" onclick="my_turn(2)">Curar</button>
+      </div>
+    </main>
+    <main>
+      <p></p>
+      <img id="icons" src="icons/hearth.png" alt="coração">
+      <input id="my_life" type="number" value='250' readonly></input>
+    </main>
+    <p></p>
+    <main id="dialog">
+      <div id="texts">
+      <p id="title">Performa um ataque direto</p>
+      <p id="content">dano aleatório de 0 a 100.</p>
+      </div>
+    </main>
+  <audio loop id="battle" src="sounds/OST/Battle.wav"></audio>
+  <script src="script.js"></script>
+</body>
+</html>

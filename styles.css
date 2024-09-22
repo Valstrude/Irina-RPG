@@ -1,0 +1,61 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: 'font2';
+    display: block;
+    text-align: center;
+}
+
+@font-face {
+    font-family: 'font2';
+    src: url('fonts/Pixel-font.ttf') format('truetype');
+}
+
+/* o inimigo */
+#enemy {
+    margin-left: -60px;
+    height: 125px;
+    image-rendering: pixelated;
+    position: absolute;
+}
+
+/* uma div só pra sair da imagem do jogo os botoes */
+#options {
+    margin-top: 225px;
+}
+
+/* mapa */
+#map {
+    margin-left: -130px;
+    height: 200px;
+    image-rendering: pixelated;
+    position: absolute;
+}
+
+#icons {
+    image-rendering: pixelated;
+    height: 25px;
+}
+
+/* styles dos botoes */
+button {
+    font-weight: bold;
+    font-family: 'font2';
+    font-size: 110%;
+}
+
+#dialog {
+    display: inline-block;
+    border: 3px, solid, white;
+}
+
+#content {
+    border: 3px, dotted, white;
+    margin-top: 25px;
+    padding: 25px;
+}
+
+#texts {
+    margin: 12.5px;
+    text-align: center;
+}
