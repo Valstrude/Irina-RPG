@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="styles.css">
-  <title>Miruna</title>
+  <title>Irina</title>
 </head>
 <body>
     <main>
-      <p id="prompt">Um monstro aparece em sua frente!</p>
+      <p id="prompt">Um <span style="color: red;">Monstro</span> aparece em sua frente!</p>
       <img id="icons" src="icons/goblin.png" alt="goblin">
       <input id="enemy_life" type="number" value='250' readonly></input>
       <p></p>
@@ -17,7 +17,7 @@
     <main>
       <div id="options">
         <button id="atacar" onclick="my_turn(1)">Atacar</button>
-        <button id="defender" onclick="my_turn(3)">Defender</button>
+        <button id="defender" onclick="my_turn(3)">Converter</button>
         <button id="curar" onclick="my_turn(2)">Curar</button>
       </div>
     </main>
@@ -28,9 +28,9 @@
     </main>
     <p></p>
     <main id="dialog">
-      <div id="texts">
-      <p id="title">Performa um ataque direto</p>
-      <p id="content">dano aleatório de 0 a 100.</p>
+      <div id="all_text">
+      <p id="title">Irina</p>
+      <p id="content">Uma simples <span style="color: yellow;">Sacerdotisa</span>, com a missão de <span style="color: green;">salvar</span> seu <span style="color: yellow;">irmão</span>, preso pelas amarras do <span style="color: red;">Rei Demônio</span>.<br>para isso, precisa passar por diversos <span style="color: red;">Monstros</span> em seu caminho.</p>
       </div>
     </main>
   <audio loop id="battle" src="sounds/OST/Battle.wav"></audio>
