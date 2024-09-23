@@ -44,18 +44,17 @@ button {
     font-size: 110%;
 }
 
-#dialog {
+#dialog { /* chatGPT ajuda nessa parte, um querido */
     display: inline-block;
     border: 3px, solid, white;
+    width: 300px; /* Definindo a largura para controlar o tamanho da caixa */
+    padding: 15px;
 }
 
-#content {
+#content { /* chatGPT ajuda nessa parte, um querido */
     border: 3px, dotted, white;
     margin-top: 25px;
     padding: 25px;
-}
-
-#texts {
-    margin: 12.5px;
-    text-align: center;
+    white-space: normal; /* Garante que o texto quebra as linhas automaticamente */
+    max-width: 250px; /* Limite da largura para forçar a quebra de linha */
 }
