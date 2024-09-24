@@ -111,7 +111,7 @@ function my_turn(choice) {
 
 // Função para ativar Poder Maligno no turno do oponente
 function activate_malign_power() {
-    if (Math.floor(Math.random() * 10) < 5) { // 50% de chance do monstro ativar o poder maligno
+    if (Math.floor(Math.random() * 4) < 1) { // 25% de chance do monstro ativar o poder maligno
         malign_power = true;
         prompt.innerHTML = `<span style="color: red;">O Monstro ativa seu Poder Maligno!</span>`;
     }
