@@ -31,6 +31,8 @@ var life_bonus = 10;
 var monster_count = 0;
 var init_charge = false;
 var charge_power = 0;
+var malign_power = false; // Poder maligno do monstro
+var malign_bonus = 1.25; // Aumento de poder maligno (25% a mais de dano)
 
 // sounds OST
 var battle = document.getElementById('battle');
@@ -107,18 +109,38 @@ function my_turn(choice) {
     }
 }
 
+// Função para ativar Poder Maligno no turno do oponente
+function activate_malign_power() {
+    if (Math.floor(Math.random() * 10) < 5) { // 50% de chance do monstro ativar o poder maligno
+        malign_power = true;
+        prompt.innerHTML = `<span style="color: red;">O Monstro ativa seu Poder Maligno!</span>`;
+    }
+};
+
 function oponent_turn() {
     prompt.innerHTML = `Turno do <span style="color: red;">oponente</span>!`;
 
+    activate_malign_power(); // Ativa o Poder Maligno, se tiver sorte
+
     setTimeout(async () => {
         if (my_bar.value > 0 && enemy_bar.value > 0) {
+            // Aplicação do dano do oponente com poder maligno
+            var min = Math.ceil(1);
+            var max = Math.floor(101);
+            var base_attack = 0;
 
-            if (init_charge == false) {
-                my_bar.value -= enemy_attack = Math.floor(Math.random() * 101); // dano tomado(annnnn)
+            if (malign_power) {
+                base_attack = Math.floor(Math.random() * (max - min) + min);
             } else {
-                my_bar.value -= Math.floor(enemy_attack = Math.floor(Math.random() * 101) / 2); // dano tomado(annnnn)
+                base_attack = Math.floor(Math.random() * 101);
+            };
+            
+            enemy_attack = malign_power ? Math.floor(base_attack * malign_bonus) : base_attack;
+            my_bar.value -= enemy_attack; // dano tomado com malign power
+            
+            if (init_charge == true) {
                 charge_power = Math.floor(enemy_attack / 2);
-            }
+            };
 
             if (init_charge == false) {
                 if (enemy_attack < 70 && enemy_attack > 0) {
@@ -136,7 +158,7 @@ function oponent_turn() {
 
             } else {
                 release.play();
-                prompt.innerHTML = `Convertido: <span style="color: yellow;">` + charge_power + `</span> de <span style="color: red;">` + enemy_attack + `</span>!`;
+                prompt.innerHTML = `Convertido <span style="color: yellow;">` + charge_power + `</span> em poder <span style="color: yellow;">divino</span> de <span style="color: red;">` + enemy_attack + `</span> de dano físico!`;
             }
             
             
@@ -170,7 +192,7 @@ function battle_stats() {
 
         monster_count += 1;
 
-        prompt.innerHTML = `Você Derrotou seu <span style="color: red;">Oponente!`;
+        prompt.innerHTML = `Você Derrotou seu <span style="color: red;">Oponente</span>!`;
     };
     if (my_bar.value <= 0) {
         attack_button.setAttribute('disabled', '');
@@ -203,26 +225,40 @@ function oponent_change() {
 
         life_bonus *= monster_count;
 
-        enemy_bar.value = 250;
+        enemy_bar.value = 300;
         my_bar.value = (250 + life_bonus);
 
         enemy_img.setAttribute('src', 'enemy/0' + oponent_changer + '.png');
 
         prompt.innerHTML = `Um <span style="color: red;">Monstro</span> aparece em sua frente!`;
     }, time * 2.5);
-}
+};
 
-function dialog_box() {
+function dialog_box() { // especificação dos botoes
     attack_button.addEventListener('mouseover', function() {
         title.innerHTML = "Lançar Ataque!";
         content.innerHTML = `ataque com sua adaga para causar entre <span style="color: red">1</span> a <span style="color: red;">100</span> de dano físico. <br>Cuidado, ataques podem <span style="color: yellow;">falhar</span>!`;
     });
     convert_button.addEventListener('mouseover', function() {
         title.innerHTML = "Iniciar conversão!";
-        content.innerHTML = `Reduza pela <span style="color: yellow;">metade</span> o dano físico do ataque inimigo. <br> o restante é <span style="color: yellow;">convertido</span> em poder <span style="color: yellow;">divino</span> para seu próximo ataque! <br> <span style="color: red;">Lembre-se:</span> ataque após converter para usar o poder <span style="color: yellow;">divino</span>.`;
+        content.innerHTML = `Converte <span style="color: yellow;">25%</span> do dano físico recebido em poder <span style="color: yellow;">divino</span> se atacar no próximo turno, lembre-se: Isso não impede o <span style="color: red;">dano</span> no turno do oponente.`;
     });
     cure_button.addEventListener('mouseover', function() {
         title.innerHTML = "Recuperar Forças!";
         content.innerHTML = `Use um <span style="color: green;">milagre</span> de cura para regenerar <span style="color: green;">50</span> pontos de <span style="color: green;">vida</span>. <br>Não deixe a batalha te derrubar!`;
+    });
+
+    // mouse out quando ele sai volta pra quest
+    attack_button.addEventListener('mouseout', function() {
+        title.innerHTML = `Irina`;
+        content.innerHTML = `Uma simples <span style="color: yellow;">Sacerdotisa</span>, com a missão de <span style="color: green;">salvar</span> seu <span style="color: yellow;">irmão</span>, preso pelas amarras do <span style="color: red;">Rei Demônio</span>.<br>para isso, precisa passar por diversos <span style="color: red;">Monstros</span> em seu caminho.`;
+    });
+    convert_button.addEventListener('mouseout', function() {
+        title.innerHTML = `Irina`;
+        content.innerHTML = `Uma simples <span style="color: yellow;">Sacerdotisa</span>, com a missão de <span style="color: green;">salvar</span> seu <span style="color: yellow;">irmão</span>, preso pelas amarras do <span style="color: red;">Rei Demônio</span>.<br>para isso, precisa passar por diversos <span style="color: red;">Monstros</span> em seu caminho.`;
+    });
+    cure_button.addEventListener('mouseout', function() {
+        title.innerHTML = `Irina`;
+        content.innerHTML = `Uma simples <span style="color: yellow;">Sacerdotisa</span>, com a missão de <span style="color: green;">salvar</span> seu <span style="color: yellow;">irmão</span>, preso pelas amarras do <span style="color: red;">Rei Demônio</span>.<br>para isso, precisa passar por diversos <span style="color: red;">Monstros</span> em seu caminho.`;
     });
 };
