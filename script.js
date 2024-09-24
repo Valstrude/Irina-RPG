@@ -120,6 +120,8 @@ function activate_malign_power() {
 function oponent_turn() {
     prompt.innerHTML = `Turno do <span style="color: red;">oponente</span>!`;
 
+    charge_power = 0; // reseta o charge (se a pessoa só atacar depois de converter fica com bonus pra sempre kk)
+
     activate_malign_power(); // Ativa o Poder Maligno, se tiver sorte
 
     setTimeout(async () => {
