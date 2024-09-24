@@ -223,6 +223,6 @@ function dialog_box() {
     });
     cure_button.addEventListener('mouseover', function() {
         title.innerHTML = "Recuperar Forças!";
-        content.innerHTML = `Use uma <span style="color: green;">poção</span> de cura para regenerar <span style="color: green;">50</span> pontos de <span style="color: green;">vida</span>. <br>Não deixe a batalha te derrubar!`;
+        content.innerHTML = `Use um <span style="color: green;">milagre</span> de cura para regenerar <span style="color: green;">50</span> pontos de <span style="color: green;">vida</span>. <br>Não deixe a batalha te derrubar!`;
     });
 };
