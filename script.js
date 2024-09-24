@@ -32,7 +32,7 @@ var monster_count = 0;
 var init_charge = false;
 var charge_power = 0;
 var malign_power = false; // Poder maligno do monstro
-var malign_bonus = 1.25; // Aumento de poder maligno (25% a mais de dano)
+var malign_bonus = 1.4; // Aumento de poder maligno (olhe pro ultimo numero 3 = 30%)
 
 // sounds OST
 var battle = document.getElementById('battle');
@@ -111,7 +111,7 @@ function my_turn(choice) {
 
 // Função para ativar Poder Maligno no turno do oponente
 function activate_malign_power() {
-    if (Math.floor(Math.random() * 4) < 1) { // 25% de chance do monstro ativar o poder maligno
+    if (Math.floor(Math.random() * 20) < 3) { // chance do monstro ativar o poder maligno
         malign_power = true;
         prompt.innerHTML = `<span style="color: red;">O Monstro ativa seu Poder Maligno!</span>`;
     }
@@ -226,7 +226,7 @@ function oponent_change() {
         life_bonus *= monster_count;
 
         enemy_bar.value = 300;
-        my_bar.value = (250 + life_bonus);
+        my_bar.value = (300 + life_bonus);
 
         enemy_img.setAttribute('src', 'enemy/0' + oponent_changer + '.png');
 
@@ -241,7 +241,7 @@ function dialog_box() { // especificação dos botoes
     });
     convert_button.addEventListener('mouseover', function() {
         title.innerHTML = "Iniciar conversão!";
-        content.innerHTML = `Converte <span style="color: yellow;">25%</span> do dano físico recebido em poder <span style="color: yellow;">divino</span> se atacar no próximo turno, lembre-se: Isso não impede o <span style="color: red;">dano</span> no turno do oponente.`;
+        content.innerHTML = `Converte <span style="color: yellow;">25%</span> do dano físico recebido em poder <span style="color: yellow;">divino</span> se atacar no próximo turno. Lembre-se: Isso não impede o <span style="color: red;">dano</span> no turno do oponente.`;
     });
     cure_button.addEventListener('mouseover', function() {
         title.innerHTML = "Recuperar Forças!";
