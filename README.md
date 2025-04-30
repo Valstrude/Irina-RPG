@@ -1,0 +1,6 @@
+Projeto feito com Sprite Assets e OST's para as aulas de tecnologia de quando eu estudava no 3 ano do ensino-médio e me de um desconto...
+não lembro da onde peguei os Assets e as OST's, mas saiba que não são minhas.
+
+não fiz roubo games e não tentei dar uma de "Hi Hi Levei Vantagi", é que eu nao lembro mesmo...
+
+Fazem 1 ou 2 anos ja kkkkkkkkkkkkkkkkkkkkkkk
